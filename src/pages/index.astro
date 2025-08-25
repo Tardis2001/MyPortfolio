@@ -1,49 +1,95 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+import Hero from "@/components/ui/Hero";
+import MainLayout from "../layouts/MainLayout.astro";
+import { getCollection } from "astro:content";
+import Timeline from "@/components/ui/Timeline";
+import type { CollectionEntry } from "astro:content";
+import type { TimelineEntry } from "@/types";
+import PostCard from "@/components/ui/PostCard";
+
+type BlogEntry = CollectionEntry<"blog">;
+
+const rawPosts: BlogEntry[] = await getCollection("blog");
+
+const posts = rawPosts
+  .sort(
+    (a, b) =>
+      new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+  )
+  .slice(0, 3);
+
+const timelineData: TimelineEntry[] = [
+  {
+    date: "2020 - Interrompido",
+    title: "UFPR - Ciência da Computação",
+    content:
+      "Iniciei o curso de Ciência da Computação na UFPR. Apesar de não ter concluído, adquiri fundamentos sólidos em ciência da computação.",
+  },
+  {
+    date: "2022 - Concluído",
+    title: "Curso de Java",
+    content:
+      "Curso completo de Java com Leonardo Moura Leitão, abordando desde conceitos básicos até desenvolvimento com Spring Boot, bancos de dados relacionais e boas práticas de programação.",
+  },
+  {
+    date: "2024 - Andamento",
+    title: "Projeto Parajas (UFPR)",
+    content:
+      "Projeto de iniciação científica focado em pesquisa jurídica com Python e desenvolvimento de um website para consulta em base de dados. Atualmente em desenvolvimento.",
+  },
+  {
+    date: "2025 - Andamento",
+    title: "Uninter - Análise e Desenvolvimento de Sistemas",
+    content:
+      "Cursando graduação em Análise e Desenvolvimento de Sistemas, aprofundando conhecimentos em desenvolvimento de software e tecnologias emergentes.",
+  },
+];
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
-</html>
+<MainLayout>
+  <section
+    class="flex flex-col items-center justify-center w-[90%] md:w-[60%] mx-auto"
+  >
+    <Hero />
+    <Timeline timelineData={timelineData} />
+    <div class="w-full flex flex-col gap-5">
+      <h2 class="text-2xl mb-2 w-full">Ultimos Posts</h2>
+      {posts.map((post) => <PostCard post={post} />)}
+      <a href="/blog" class="text-sm text-blue-500 underline"
+        >Veja todos os posts</a
+      >
+    </div>
+  </section>
+</MainLayout>
+<!-- <section class="h-full bg-zinc-900 flex justify-center items-center flex-col">
+    <div class="w-full flex justify-center items-center flex-col gap-10">
+      <img class="w-1/2 rounded-full" src="http://placehold.co/400x400" />
+      <div
+        class="w-full flex flex-col justify-center text-center items-center gap-3"
+      >
+        <h1 class="text-white text-3xl font-google">
+          Olá! eu me chamo Matheus Evangelista
+        </h1>
+        <h2 class="text-white font-noto-sans font-bold text-2xl">
+          Sou Desenvolvedor & Estudante
+        </h2>
+        <h2 class="text-xl text-white font-google">
+          Transformando <span class="hero-text">ideias</span> em experiências digitais
+          únicas.
+        </h2>
+      </div>
+      <div class="flex flex-row gap-20">
+        <button
+          class="focus:outline-0 text-lg hover:cursor-pointer font-google p-3 bg-white rounded-2xl hover:bg-blue-400 hover:text-white transition-colors duration-500"
+        >
+          Curriculo
+        </button>
+        <button
+          class="focus:outline-0 text-lg hover:cursor-pointer font-google p-3 bg-white rounded-2xl hover:bg-blue-400 hover:text-white transition-colors duration-500"
+        >
+          Projetos
+        </button>
+      </div>
+    </div>
+  </section>
+  <section class="bg-zinc-800 h-screen"></section> -->

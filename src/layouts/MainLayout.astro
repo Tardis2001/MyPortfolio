@@ -4,9 +4,6 @@ import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import "../styles/global.css";
-import "../styles/mdx.css";
-import TOCSidebar from "@/components/TOCSidebar.astro";
-const { toc } = Astro.props;
 ---
 
 <!doctype html>
@@ -16,11 +13,8 @@ const { toc } = Astro.props;
   </head>
   <body>
     <Navbar />
-    <div class="absolute left-2 lg:w-[23%] max-[1030px]:hidden">
-      <TOCSidebar toc={toc} />
-    </div>
     <main
-      class="bg-background w-full flex flex-row justify-center items-center"
+      class="bg-background w-full flex flex-col justify-center items-center"
     >
       <slot />
     </main>

@@ -1,0 +1,87 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import MainLayout from "../../layouts/MainLayout.astro";
+import PostCard from "@/components/ui/PostCard";
+
+import {
+  Pagination,
+  PaginationContent,
+  PaginationItem,
+  PaginationLink,
+  PaginationNext,
+  PaginationPrevious,
+} from "@/components/ui/pagination";
+
+type BlogEntry = CollectionEntry<"blog">;
+
+export async function getStaticPaths() {
+  const postsPerPage = 5; // 👈 agora está dentro
+
+  const allPosts = (await getCollection("blog")).sort(
+    (a, b) =>
+      new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
+  );
+
+  const totalPages = Math.ceil(allPosts.length / postsPerPage);
+
+  return Array.from({ length: totalPages }).map((_, i) => ({
+    params: { page: String(i + 1) },
+    props: { allPosts, postsPerPage }, // 👈 manda também pros props
+  }));
+}
+
+const { page } = Astro.params;
+const currentPage = Number(page);
+
+// pega via props
+const allPosts = Astro.props.allPosts;
+
+const postsPerPage = Astro.props.postsPerPage;
+
+const paginatedPosts = allPosts.slice(
+  (currentPage - 1) * postsPerPage,
+  currentPage * postsPerPage
+);
+const totalPages = Math.ceil(allPosts.length / postsPerPage);
+---
+
+<MainLayout>
+  <section class="flex flex-col items-center gap-5 w-[90%] md:w-[60%] mx-auto">
+    {paginatedPosts.map((post) => <PostCard post={post} />)}
+  </section>
+
+  <div class="flex justify-center mt-10">
+    <Pagination>
+      <PaginationContent>
+        {
+          currentPage > 1 && (
+            <PaginationItem>
+              <PaginationPrevious href={`/blog/${currentPage - 1}`} />
+            </PaginationItem>
+          )
+        }
+
+        {
+          Array.from({ length: totalPages }, (_, i) => (
+            <PaginationItem>
+              <PaginationLink
+                href={`/blog/${i + 1}`}
+                isActive={currentPage === i + 1}
+              >
+                {i + 1}
+              </PaginationLink>
+            </PaginationItem>
+          ))
+        }
+
+        {
+          currentPage < totalPages && (
+            <PaginationItem>
+              <PaginationNext href={`/blog/${currentPage + 1}`} />
+            </PaginationItem>
+          )
+        }
+      </PaginationContent>
+    </Pagination>
+  </div>
+</MainLayout>

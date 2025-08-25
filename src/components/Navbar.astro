@@ -1,0 +1,46 @@
+---
+import ThemeToggle from "./ui/ThemeToggle";
+import NavMenu from "./ui/NavMenuMobile";
+import { NAV_LINKS, SITE_NAV_TITLE } from "@/consts";
+---
+
+<header
+  class="sticky top-0 z-50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
+>
+  <div
+    class="mx-auto flex w-full md:max-w-6xl items-center justify-between md:justify-around py-3 px-4"
+  >
+    <a
+      href="/"
+      class="flex items-center font-bold text-2xl font-noto-sans text-primary"
+    >
+      {SITE_NAV_TITLE}
+    </a>
+    <div class="flex justify-center items-center gap-5">
+      <nav class="hidden sm:flex items-center gap-6 text-sm">
+        {
+          NAV_LINKS.map((item) => (
+            <a
+              href={item.href}
+              class="capitalize transition-all duration-300 font-google text-primary"
+              style="text-shadow: none;"
+              onmouseover="this.style.textShadow='0 0 8px #2563eb, 0 0 16px #2563eb'"
+              onmouseout="this.style.textShadow='none'"
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </nav>
+      <div class="hidden sm:flex">
+        <ThemeToggle client:load />
+      </div>
+    </div>
+    <div class="flex sm:hidden justify-center items-center gap-5">
+      <ThemeToggle client:load />
+
+      <NavMenu client:load />
+    </div>
+  </div>
+  <div class="hidden sm:flex"></div>
+</header>

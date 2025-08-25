@@ -1,0 +1,28 @@
+backend:
+  name: test-repo
+
+media_folder: "public/uploads"
+public_folder: "/uploads"
+
+collections:
+  - name: "blog"
+    label: "Blog"
+    folder: "src/content/blog"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "pubDate", label: "Date", widget: "datetime" }
+      - { name: "description", label: "Description", widget: "text" }
+      - { name: "body", label: "Body", widget: "markdown" }
+
+  - name: "projeto"
+    label: "Projeto"
+    folder: "src/content/projeto"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - { name: "title", label: "Title", widget: "string" }
+      - { name: "link", label: "Project Link", widget: "string", required: false }
+      - { name: "image", label: "Image", widget: "image", required: false }
+      - { name: "body", label: "Description", widget: "markdown" }

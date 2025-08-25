@@ -1,0 +1,21 @@
+---
+import type { TOC } from "@/types";
+const { toc } = Astro.props;
+---
+
+<aside
+  class="sticky top-20 left-10 border rounded-lg p-5 bg-neutral-900 text-neutral-100"
+>
+  <h2 class="text-lg font-semibold mb-3">📑 Sumário</h2>
+  <ul class="space-y-2">
+    {
+      toc.map((item: TOC) => (
+        <li style={`margin-left: ${(item.depth - 1) * 1.2}rem`}>
+          <a class="hover:underline" href={`#${item.slug}`}>
+            {item.text}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</aside>

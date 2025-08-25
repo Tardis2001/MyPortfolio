@@ -1,0 +1,90 @@
+.content-wrapper {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  color: #f8f8f2; /* cor padrão clara, ajuste conforme seu tema */
+  font-size: 16px; /* padrão de leitura */
+  line-height: 1.6;
+}
+/* Títulos */
+.content-wrapper h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 1.5rem 0 1rem;
+}
+.content-wrapper h2 {
+  font-size: 1.75rem;
+  font-weight: 600;
+  margin: 1.25rem 0 0.75rem;
+}
+.content-wrapper h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin: 1rem 0 0.5rem;
+}
+.content-wrapper h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin: 0.75rem 0 0.5rem;
+}
+.content-wrapper h5 {
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0.5rem 0 0.25rem;
+}
+.content-wrapper h6 {
+  font-size: 0.875rem;
+  font-weight: 500;
+  margin: 0.25rem 0 0.25rem;
+}
+
+/* Parágrafos, listas e links */
+.content-wrapper p,
+.content-wrapper li,
+.content-wrapper a {
+  font-size: 1rem;
+  margin: 0.5rem 0;
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Listas */
+.content-wrapper ul,
+.content-wrapper ol {
+  margin: 0.5rem 0;
+  padding-left: 1.5rem;
+}
+
+/* Imagens e iframes */
+.content-wrapper img,
+.content-wrapper iframe {
+  max-width: 100%;
+  height: auto;
+  margin: 1rem 0;
+}
+
+/* Blocos de código */
+.content-wrapper pre,
+.content-wrapper code {
+  font-family: monospace;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  background: #2d2d2d;
+  color: #f8f8f2;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+/* Tabelas */
+.content-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0;
+}
+
+.content-wrapper th,
+.content-wrapper td {
+  border: 1px solid #ccc;
+  padding: 0.5rem;
+  text-align: left;
+}
