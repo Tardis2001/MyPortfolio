@@ -19,21 +19,6 @@
 html {
   scroll-behavior: smooth;
 }
-.hero-text {
-  place-self: center;
-  background: linear-gradient(90deg, #00f, #0ff, #00f) -100%/ 200%;
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  font: 900 clamp(2em, 10vw, 10em), sans-serif;
-  animation: shimmer 2s linear infinite;
-}
-
-@keyframes shimmer {
-  to {
-    background-position: 100%;
-  }
-}
 
 /*
   ---break---

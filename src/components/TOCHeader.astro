@@ -1,0 +1,45 @@
+---
+import type { TOC } from "@/types";
+const { toc } = Astro.props as { toc: TOC[] };
+
+import { Icon } from "astro-icon/components";
+import { CircularProgress } from "./ui/CircularProgress.tsx";
+import ScrollTOCHeader from "./ui/ScrollTOCHeader";
+
+let progressVal: number = 0;
+---
+
+<div class="w-full">
+  <details class="group">
+    <summary class="flex w-full cursor-pointer items-center justify-between">
+      <div class="mx-auto flex w-full max-w-3xl my-auto items-center px-4 py-3">
+        <span class="flex items-center">
+          <CircularProgress size={40} strokeWidth={2} client:only />
+        </span>
+        <span class="text-muted-foreground flex-grow truncate text-sm">
+          Sumario
+        </span>
+        <span class="text-muted-foreground ml-2">
+          <Icon
+            name="lucide:chevron-down"
+            class="h-4 w-4 transition-transform duration-200 group-open:rotate-180"
+          />
+        </span>
+      </div>
+    </summary>
+    <ScrollTOCHeader client:load toc={toc} />
+  </details>
+</div>
+
+<script is:inline>
+  function updateProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const progress = Math.min(scrollTop / docHeight, 1);
+
+    progressVal = Math.round(progress * 100) + "%";
+  }
+
+  window.addEventListener("scroll", updateProgress);
+  updateProgress();
+</script>

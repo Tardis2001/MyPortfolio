@@ -1,40 +1,40 @@
+/* BASE: Modo Claro */
 .content-wrapper {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  color: #f8f8f2; /* cor padrão clara, ajuste conforme seu tema */
-  font-size: 16px; /* padrão de leitura */
+  color: #0f172a; /* texto preto no light */
+  font-size: 16px;
   line-height: 1.6;
+
+  text-wrap: balance;
+  overflow-wrap: break-word;
 }
+
 /* Títulos */
 .content-wrapper h1 {
   font-size: 2rem;
   font-weight: 700;
   margin: 1.5rem 0 1rem;
+  color: #0b1220;
 }
 .content-wrapper h2 {
   font-size: 1.75rem;
   font-weight: 600;
   margin: 1.25rem 0 0.75rem;
+  color: #0b1220;
 }
 .content-wrapper h3 {
   font-size: 1.5rem;
   font-weight: 600;
   margin: 1rem 0 0.5rem;
+  color: #111827;
 }
-.content-wrapper h4 {
-  font-size: 1.25rem;
-  font-weight: 500;
-  margin: 0.75rem 0 0.5rem;
-}
-.content-wrapper h5 {
-  font-size: 1rem;
+.content-wrapper h4,
+.content-wrapper h5,
+.content-wrapper h6 {
   font-weight: 500;
   margin: 0.5rem 0 0.25rem;
-}
-.content-wrapper h6 {
-  font-size: 0.875rem;
-  font-weight: 500;
-  margin: 0.25rem 0 0.25rem;
+  color: #111827;
 }
 
 /* Parágrafos, listas e links */
@@ -43,8 +43,11 @@
 .content-wrapper a {
   font-size: 1rem;
   margin: 0.5rem 0;
-  color: inherit;
+  color: #0f172a;
   text-decoration: none;
+}
+.content-wrapper a:hover {
+  color: #2563eb;
 }
 
 /* Listas */
@@ -68,8 +71,8 @@
   font-family: monospace;
   font-size: 0.875rem;
   line-height: 1.4;
-  background: #2d2d2d;
-  color: #f8f8f2;
+  background: #f5f5f5;
+  color: #0f172a;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   overflow-x: auto;
@@ -81,10 +84,52 @@
   border-collapse: collapse;
   margin: 1rem 0;
 }
-
 .content-wrapper th,
 .content-wrapper td {
   border: 1px solid #ccc;
   padding: 0.5rem;
   text-align: left;
+  color: #0f172a;
+}
+
+/* =====================
+   MODO ESCURO
+   ===================== */
+.dark .content-wrapper {
+  color: #f8f8f2;
+}
+
+.dark .content-wrapper h1,
+.dark .content-wrapper h2,
+.dark .content-wrapper h3,
+.dark .content-wrapper h4,
+.dark .content-wrapper h5,
+.dark .content-wrapper h6 {
+  color: #f8fafc;
+}
+
+.dark .content-wrapper p,
+.dark .content-wrapper li,
+.dark .content-wrapper td,
+.dark .content-wrapper th {
+  color: #e5e7eb;
+}
+
+.dark .content-wrapper a {
+  color: #93c5fd;
+}
+.dark .content-wrapper a:hover {
+  color: #bfdbfe;
+}
+
+.dark .content-wrapper pre,
+.dark .content-wrapper code {
+  background: #1e293b;
+  color: #f8f8f2;
+}
+
+.dark .content-wrapper table,
+.dark .content-wrapper th,
+.dark .content-wrapper td {
+  border-color: #334155;
 }

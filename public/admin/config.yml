@@ -1,8 +1,7 @@
 backend:
-  name: test-repo
-
-media_folder: "public/uploads"
-public_folder: "/uploads"
+  name: git-gateway
+  media_folder: "public/uploads"
+  public_folder: "public"
 
 collections:
   - name: "blog"
@@ -12,17 +11,21 @@ collections:
     slug: "{{slug}}"
     fields:
       - { name: "title", label: "Title", widget: "string" }
+      - { name: "categories", label: "Categories", widget: "list" }
       - { name: "pubDate", label: "Date", widget: "datetime" }
-      - { name: "description", label: "Description", widget: "text" }
+      - { name: "description", label: "Description", widget: "text"  }
+      - { name: "image", label: "Image", widget: "image" }
       - { name: "body", label: "Body", widget: "markdown" }
 
   - name: "projeto"
     label: "Projeto"
-    folder: "src/content/projeto"
+    folder: "src/content/projects"
     create: true
     slug: "{{slug}}"
     fields:
       - { name: "title", label: "Title", widget: "string" }
-      - { name: "link", label: "Project Link", widget: "string", required: false }
-      - { name: "image", label: "Image", widget: "image", required: false }
+      - { name: "link", label: "Project Link", widget: "string"}
+      - { name: "image", label: "Image", widget: "image" }
+      - { name: "techs", label: "Tech", widget: "list" }
+      - { name: "description", label: "Description", widget: "text" }
       - { name: "body", label: "Description", widget: "markdown" }

@@ -4,23 +4,32 @@ import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import "../styles/global.css";
-import "../styles/mdx.css";
+import "../styles/blogPost.css";
 import TOCSidebar from "@/components/TOCSidebar.astro";
+import TOCHeader from "@/components/TOCHeader.astro";
 const { toc } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="pt-br">
+<html class="overflow-x-hidden dark" lang="pt-br">
   <head>
     <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
   </head>
-  <body>
-    <Navbar />
-    <div class="absolute left-2 lg:w-[23%] max-[1030px]:hidden">
+  <body class="overflow-x-hidden">
+    <header
+      class="fixed top-0 left-0 right-0 w-full z-50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
+    >
+      <Navbar />
+      <div class="hidden max-[1030px]:flex overflow-visible">
+        <TOCHeader toc={toc} />
+      </div>
+    </header>
+    <div class="fixed left-2 top-36 lg:w-[23%] max-[1030px]:hidden flex">
       <TOCSidebar toc={toc} />
     </div>
+
     <main
-      class="bg-background w-full flex flex-row justify-center items-center"
+      class="bg-background pt-32 w-full flex flex-row justify-center items-center"
     >
       <slot />
     </main>

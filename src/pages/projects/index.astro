@@ -1,0 +1,17 @@
+---
+import MainLayout from "@/layouts/MainLayout.astro";
+import { getCollection, type CollectionEntry } from "astro:content";
+type ProjectEntry = CollectionEntry<"project">;
+const allProjects = await getCollection("project");
+import ProjectCard from "@/components/ui/ProjectCard";
+---
+
+<MainLayout>
+  <section class="mx-auto flex flex-col justify-center items-center gap-10">
+    {
+      allProjects.map((project: ProjectEntry) => (
+        <ProjectCard project={project} />
+      ))
+    }
+  </section>
+</MainLayout>

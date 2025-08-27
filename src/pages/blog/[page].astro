@@ -12,10 +12,8 @@ import {
   PaginationPrevious,
 } from "@/components/ui/pagination";
 
-type BlogEntry = CollectionEntry<"blog">;
-
 export async function getStaticPaths() {
-  const postsPerPage = 5; // 👈 agora está dentro
+  const postsPerPage = 5;
 
   const allPosts = (await getCollection("blog")).sort(
     (a, b) =>
@@ -26,23 +24,20 @@ export async function getStaticPaths() {
 
   return Array.from({ length: totalPages }).map((_, i) => ({
     params: { page: String(i + 1) },
-    props: { allPosts, postsPerPage }, // 👈 manda também pros props
+    props: { allPosts, postsPerPage, totalPages },
   }));
 }
 
 const { page } = Astro.params;
 const currentPage = Number(page);
-
-// pega via props
 const allPosts = Astro.props.allPosts;
-
 const postsPerPage = Astro.props.postsPerPage;
+const totalPages = Astro.props.totalPages;
 
 const paginatedPosts = allPosts.slice(
   (currentPage - 1) * postsPerPage,
   currentPage * postsPerPage
 );
-const totalPages = Math.ceil(allPosts.length / postsPerPage);
 ---
 
 <MainLayout>

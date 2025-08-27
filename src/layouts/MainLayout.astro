@@ -2,23 +2,29 @@
 import BaseHead from "../components/BaseHead.astro";
 import Navbar from "@/components/Navbar.astro";
 import Footer from "@/components/Footer.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+const { title, description, footerShowgoToTop } = Astro.props;
+
 import "../styles/global.css";
 ---
 
 <!doctype html>
 <html lang="pt-br">
   <head>
-    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    <BaseHead title={title} description={description} />
   </head>
   <body>
-    <Navbar />
+    <header
+      class="sticky top-0 left-0 right-0 w-full z-50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
+    >
+      <Navbar />
+    </header>
     <main
       class="bg-background w-full flex flex-col justify-center items-center"
     >
       <slot />
     </main>
-    <Footer />
+    <Footer showGotoTop={footerShowgoToTop} />
   </body>
 </html>
 

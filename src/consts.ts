@@ -15,8 +15,4 @@ export const NAV_LINKS = [
     href: "/projects",
     label: "Projetos",
   },
-  {
-    href: "/contacts",
-    label: "Contatos",
-  },
 ];

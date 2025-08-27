@@ -6,6 +6,7 @@ import Timeline from "@/components/ui/Timeline";
 import type { CollectionEntry } from "astro:content";
 import type { TimelineEntry } from "@/types";
 import PostCard from "@/components/ui/PostCard";
+import TechBadge from "@/components/ui/BadgeTech";
 
 type BlogEntry = CollectionEntry<"blog">;
 
@@ -17,6 +18,15 @@ const posts = rawPosts
       new Date(b.data.pubDate).getTime() - new Date(a.data.pubDate).getTime()
   )
   .slice(0, 3);
+const techs = [
+  { name: "React", logo: "react" },
+  { name: "Astro", logo: "astro" },
+  { name: "Javascript", logo: "javascript" },
+  { name: "Java", logo: "openjdk" },
+  { name: "Python", logo: "python" },
+  { name: "Django", logo: "django" },
+  { name: "Spring Boot", logo: "spring" },
+];
 
 const timelineData: TimelineEntry[] = [
   {
@@ -51,6 +61,16 @@ const timelineData: TimelineEntry[] = [
     class="flex flex-col items-center justify-center w-[90%] md:w-[60%] mx-auto"
   >
     <Hero />
+    <div class="flex justify-center items-center gap-5 flex-wrap">
+      {
+        techs.map((tech, index) => {
+          const badgeUrl = `https://img.shields.io/badge/${encodeURIComponent(
+            tech.name
+          )}-181717?style=flat&logo=${encodeURIComponent(tech.logo)}&logoColor=white`;
+          return <img src={badgeUrl} alt={tech.name} class="h-8" />;
+        })
+      }
+    </div>
     <Timeline timelineData={timelineData} />
     <div class="w-full flex flex-col gap-5">
       <h2 class="text-2xl mb-2 w-full">Ultimos Posts</h2>
