@@ -1,8 +1,9 @@
 backend:
   name: git-gateway
+  repo: tardis2001/MyPortfolio
   branch: main
-media_folder: "public/uploads" 
-public_folder: "/uploads"    
+media_folder: src/assets/img
+public_folder: src/assets/img    
 
 collections:
   - name: "blog"
