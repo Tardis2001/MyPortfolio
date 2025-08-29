@@ -2,14 +2,16 @@ backend:
   name: git-gateway
   repo: tardis2001/MyPortfolio
   branch: main
-media_folder: src/assets/img
-public_folder: src/assets/img    
+local_backend: true
+media_folder: "public/uploads/"   
+public_folder: "/uploads/"   
 
 collections:
   - name: "blog"
     label: "Blog"
     folder: "src/content/blog"
     create: true
+    format: "frontmatter"
     extension: "mdx"
     slug: "{{slug}}"
     fields:
@@ -23,6 +25,7 @@ collections:
   - name: "projeto"
     label: "Projeto"
     folder: "src/content/projects"
+    format: "frontmatter"
     extension: "mdx"
     create: true
     slug: "{{slug}}"
@@ -32,4 +35,4 @@ collections:
       - { name: "image", label: "Image", widget: "image" }
       - { name: "techs", label: "Tech", widget: "list" }
       - { name: "description", label: "Description", widget: "text" }
-      - { name: "body", label: "Description", widget: "markdown" }
+      - { name: "body", label: "Body", widget: "markdown" }

@@ -1,15 +1,18 @@
 import type { CollectionEntry } from "astro:content";
 import { Card, CardContent, CardDescription, CardTitle } from "./card";
 import { Separator } from "./separator";
+import { useEffect } from "react";
 
-type ProjectEntry = CollectionEntry<"project">;
+type ProjectEntry = CollectionEntry<"projects">;
 export default function ProjectCard({ project }: { project: ProjectEntry }) {
+ 
+
   return (
     <a href={project.data.link}>
       <Card className="w-[90%] bg-background flex flex-row mx-auto">
         <CardContent className="flex flex-col justify-center items-center md:items-start md:flex-row gap-10">
           <img
-            src={project.data.image}
+            src={`/public${project.data.image}`}
             className="w-full md:max-w-80 md:h-40 rounded-md object-cover"
           />
           <div className="hidden md:block h-full">

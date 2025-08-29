@@ -1,9 +1,10 @@
 ---
 import MainLayout from "@/layouts/MainLayout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
-type ProjectEntry = CollectionEntry<"project">;
-const allProjects = await getCollection("project");
+type ProjectEntry = CollectionEntry<"projects">;
+const allProjects = await getCollection("projects");
 import ProjectCard from "@/components/ui/ProjectCard";
+allProjects.map((project) => console.log(project.data.image));
 ---
 
 <MainLayout>

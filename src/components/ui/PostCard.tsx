@@ -6,24 +6,33 @@ import { Separator } from "./separator";
 type BlogEntry = CollectionEntry<"blog">;
 
 export default function PostCard({ post }: { post: BlogEntry }) {
+  const formattedDate = new Date(post.data.pubDate).toLocaleDateString(
+    "pt-BR",
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    }
+  );
+
   return (
     <a href={`/blog/${post.slug}`}>
-      <Card className="w-full bg-background flex flex-row">
-        <CardContent className="flex flex-col justify-center items-center md:flex-row gap-10">
+      <Card className="w-[60vw] bg-background flex flex-row">
+        <CardContent className="flex flex-col justify-center items-center md:flex-row w-full gap-10">
           <img
-            src={post.data.image}
-            className="w-full md:min-w-80 md:h-40 rounded-md object-cover"
+            src={`/public${post.data.image}`}
+            className="w-full md:min-w-50 md:h-40 rounded-md object-cover"
           />
           <div className="hidden md:block h-full">
             <Separator orientation="vertical" />
           </div>
 
-          <div className="flex flex-col gap-5">
+          <div className="flex flex-col w-full gap-5">
             <CardTitle>{post.data.title}</CardTitle>
             <p className="text-sm">{post.data.description}</p>
             <Separator />
 
-            <div className="flex items-center space-x-5 ">
+            <div className="flex items-center space-x-5 w-full">
               <div className="flex items-center gap-2">
                 {post.data.categories?.map((category) => (
                   <span
@@ -35,7 +44,7 @@ export default function PostCard({ post }: { post: BlogEntry }) {
                 ))}
               </div>
               <Separator orientation="vertical" />
-              <p>{post.data.pubDate}</p>
+              <p className="w-full text-sm">{formattedDate}</p>{" "}
             </div>
           </div>
         </CardContent>

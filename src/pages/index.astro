@@ -6,7 +6,6 @@ import Timeline from "@/components/ui/Timeline";
 import type { CollectionEntry } from "astro:content";
 import type { TimelineEntry } from "@/types";
 import PostCard from "@/components/ui/PostCard";
-import TechBadge from "@/components/ui/BadgeTech";
 
 type BlogEntry = CollectionEntry<"blog">;
 
@@ -74,42 +73,10 @@ const timelineData: TimelineEntry[] = [
     <Timeline timelineData={timelineData} />
     <div class="w-full flex flex-col gap-5">
       <h2 class="text-2xl mb-2 w-full">Ultimos Posts</h2>
-      {posts.map((post) => <PostCard post={post} />)}
+      {posts.map((post: BlogEntry) => <PostCard post={post} />)}
       <a href="/blog" class="text-sm text-blue-500 underline"
         >Veja todos os posts</a
       >
     </div>
   </section>
 </MainLayout>
-<!-- <section class="h-full bg-zinc-900 flex justify-center items-center flex-col">
-    <div class="w-full flex justify-center items-center flex-col gap-10">
-      <img class="w-1/2 rounded-full" src="http://placehold.co/400x400" />
-      <div
-        class="w-full flex flex-col justify-center text-center items-center gap-3"
-      >
-        <h1 class="text-white text-3xl font-google">
-          Olá! eu me chamo Matheus Evangelista
-        </h1>
-        <h2 class="text-white font-noto-sans font-bold text-2xl">
-          Sou Desenvolvedor & Estudante
-        </h2>
-        <h2 class="text-xl text-white font-google">
-          Transformando <span class="hero-text">ideias</span> em experiências digitais
-          únicas.
-        </h2>
-      </div>
-      <div class="flex flex-row gap-20">
-        <button
-          class="focus:outline-0 text-lg hover:cursor-pointer font-google p-3 bg-white rounded-2xl hover:bg-blue-400 hover:text-white transition-colors duration-500"
-        >
-          Curriculo
-        </button>
-        <button
-          class="focus:outline-0 text-lg hover:cursor-pointer font-google p-3 bg-white rounded-2xl hover:bg-blue-400 hover:text-white transition-colors duration-500"
-        >
-          Projetos
-        </button>
-      </div>
-    </div>
-  </section>
-  <section class="bg-zinc-800 h-screen"></section> -->
