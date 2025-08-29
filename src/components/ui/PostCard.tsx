@@ -20,7 +20,7 @@ export default function PostCard({ post }: { post: BlogEntry }) {
       <Card className="w-[60vw] bg-background flex flex-row">
         <CardContent className="flex flex-col justify-center items-center md:flex-row w-full gap-10">
           <img
-            src={`/public${post.data.image}`}
+            src={post.data.image}
             className="w-full md:min-w-50 md:h-40 rounded-md object-cover"
           />
           <div className="hidden md:block h-full">

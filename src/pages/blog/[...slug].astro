@@ -2,7 +2,6 @@
 import { type CollectionEntry, getCollection, render } from "astro:content";
 import BlogPost from "../../layouts/BlogPost.astro";
 import PostPagination from "@/components/ui/PostPagination";
-type BlogEntry = CollectionEntry<"blog">;
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -14,14 +13,13 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
-const { Content, headings } = await render(post); // 👈 pega os headings também
+const { Content, headings } = await render(post);
 
 const toc = headings.map((h) => ({
   depth: h.depth,
   text: h.text,
   slug: h.slug,
 }));
-// Pega todos os posts e ordena por data
 const allPosts = (await getCollection("blog")).sort(
   (a, b) =>
     new Date(a.data.pubDate).getTime() - new Date(b.data.pubDate).getTime()
@@ -32,7 +30,6 @@ const postIndex = allPosts.findIndex((p) => p.slug === slug);
 
 if (postIndex === -1) throw new Error("Post não encontrado");
 
-// Posts anterior e próximo
 const prevPost = allPosts[postIndex - 1] ?? null;
 const nextPost = allPosts[postIndex + 1] ?? null;
 ---
@@ -43,7 +40,7 @@ const nextPost = allPosts[postIndex + 1] ?? null;
   >
     <img src={post.data.image} alt={post.data.description} />
     <PostPagination nextPost={nextPost} prevPost={prevPost} />
-    <div class="content-wrapper whitespace-pre-line">
+    <div class="content-wrapper">
       <Content />
     </div>
   </section>

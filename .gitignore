@@ -26,3 +26,5 @@ pnpm-debug.log*
 src/content/blog/*
 src/content/project/*
 public/uploads/*
+
+.vscode

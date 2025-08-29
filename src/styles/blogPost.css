@@ -1,8 +1,7 @@
-/* BASE: Modo Claro */
 .content-wrapper {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     "Helvetica Neue", Arial, sans-serif;
-  color: #0f172a; /* texto preto no light */
+  color: #0f172a;
   font-size: 16px;
   line-height: 1.6;
 
@@ -10,7 +9,6 @@
   overflow-wrap: break-word;
 }
 
-/* Títulos */
 .content-wrapper h1 {
   font-size: 2rem;
   font-weight: 700;
@@ -37,48 +35,51 @@
   color: #111827;
 }
 
-/* Parágrafos, listas e links */
 .content-wrapper p,
 .content-wrapper li,
 .content-wrapper a {
   font-size: 1rem;
   margin: 0.5rem 0;
-  color: #0f172a;
-  text-decoration: none;
+  color: #111827;
 }
 .content-wrapper a:hover {
-  color: #2563eb;
+  text-decoration: underline;
+}
+.content-wrapper p {
+  text-align: justify;
+}
+.content-wrapper ul {
+  list-style-type: disc;
+}
+.content-wrapper ol {
+  list-style-type: decimal;
 }
 
-/* Listas */
 .content-wrapper ul,
 .content-wrapper ol {
   margin: 0.5rem 0;
   padding-left: 1.5rem;
 }
 
-/* Imagens e iframes */
 .content-wrapper img,
 .content-wrapper iframe {
-  max-width: 100%;
+  min-width: 100%;
   height: auto;
-  margin: 1rem 0;
+  margin: 1.2rem;
 }
 
-/* Blocos de código */
 .content-wrapper pre,
 .content-wrapper code {
   font-family: monospace;
   font-size: 0.875rem;
   line-height: 1.4;
-  background: #f5f5f5;
+  background: #f5f5f5 !important;
   color: #0f172a;
   padding: 0.25rem 0.5rem;
   border-radius: 4px;
   overflow-x: auto;
 }
 
-/* Tabelas */
 .content-wrapper table {
   width: 100%;
   border-collapse: collapse;
@@ -111,25 +112,41 @@
 .dark .content-wrapper p,
 .dark .content-wrapper li,
 .dark .content-wrapper td,
-.dark .content-wrapper th {
-  color: #e5e7eb;
-}
-
+.dark .content-wrapper th,
 .dark .content-wrapper a {
-  color: #93c5fd;
-}
-.dark .content-wrapper a:hover {
-  color: #bfdbfe;
+  color: #e5e7eb;
 }
 
 .dark .content-wrapper pre,
 .dark .content-wrapper code {
-  background: #1e293b;
-  color: #f8f8f2;
+  background: #1e293b !important;
+  color: #f8f8f2 !important;
 }
 
 .dark .content-wrapper table,
 .dark .content-wrapper th,
 .dark .content-wrapper td {
   border-color: #334155;
+}
+
+blockquote {
+  border-left: 4px solid #3b82f6;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  line-height: 1.6;
+  border-radius: 0.25rem;
+  padding-block: 0.2rem;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+:root blockquote {
+  background-color: #f9fafb;
+  color: #1f2937;
+}
+
+.dark blockquote {
+  background-color: #1f2937;
+  color: #e5e7eb;
+  border-left-color: #60a5fa;
 }

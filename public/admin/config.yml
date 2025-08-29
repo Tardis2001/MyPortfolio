@@ -3,14 +3,15 @@ backend:
   repo: tardis2001/MyPortfolio
   branch: main
 local_backend: true
-media_folder: "public/uploads/"   
-public_folder: "/uploads/"   
+media_folder: "src/assets/"   
+public_folder: "src/assets/"   
 
 collections:
   - name: "blog"
     label: "Blog"
     folder: "src/content/blog"
     create: true
+    format: "frontmatter"
     extension: "mdx"
     slug: "{{slug}}"
     fields:
@@ -26,6 +27,7 @@ collections:
     folder: "src/content/projects"
     extension: "mdx"
     create: true
+    format: "frontmatter"
     slug: "{{slug}}"
     fields:
       - { name: "title", label: "Title", widget: "string" }
