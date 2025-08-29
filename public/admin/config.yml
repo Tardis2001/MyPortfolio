@@ -11,7 +11,6 @@ collections:
     label: "Blog"
     folder: "src/content/blog"
     create: true
-    format: "frontmatter"
     extension: "mdx"
     slug: "{{slug}}"
     fields:
@@ -25,7 +24,6 @@ collections:
   - name: "projeto"
     label: "Projeto"
     folder: "src/content/projects"
-    format: "frontmatter"
     extension: "mdx"
     create: true
     slug: "{{slug}}"
