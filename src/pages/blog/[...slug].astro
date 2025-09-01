@@ -13,6 +13,7 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
+
 const { Content, headings } = await render(post);
 
 const toc = headings.map((h) => ({
@@ -27,8 +28,6 @@ const allPosts = (await getCollection("blog")).sort(
 
 const { slug } = Astro.params;
 const postIndex = allPosts.findIndex((p) => p.slug === slug);
-
-if (postIndex === -1) throw new Error("Post não encontrado");
 
 const prevPost = allPosts[postIndex - 1] ?? null;
 const nextPost = allPosts[postIndex + 1] ?? null;

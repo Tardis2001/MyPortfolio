@@ -25,7 +25,9 @@ export default defineConfig({
     icon(),
     react(),
   ],
-
+  redirects: {
+    "/blog": "/404",
+  },
   vite: {
     plugins: [tailwindcss()],
   },

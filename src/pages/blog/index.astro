@@ -1,0 +1,11 @@
+---
+import { getCollection } from "astro:content";
+
+const allPosts = await getCollection("blog");
+let refresh = false;
+if (!allPosts.length) {
+  refresh = true;
+}
+---
+
+{refresh ? <meta http-equiv="refresh" content="0;url=/404" /> : null}

@@ -14,7 +14,6 @@ export default function PostCard({ post }: { post: BlogEntry }) {
       year: "numeric",
     }
   );
-
   return (
     <a href={`/blog/${post.slug}`}>
       <Card className="w-[60vw] bg-background flex flex-row">

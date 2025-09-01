@@ -3,8 +3,11 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import { getCollection, type CollectionEntry } from "astro:content";
 type ProjectEntry = CollectionEntry<"projects">;
 const allProjects = await getCollection("projects");
+let refresh = false;
+if (!allProjects.length) {
+  refresh = true;
+}
 import ProjectCard from "@/components/ui/ProjectCard";
-allProjects.map((project) => console.log(project.data.image));
 ---
 
 <MainLayout>
@@ -15,4 +18,5 @@ allProjects.map((project) => console.log(project.data.image));
       ))
     }
   </section>
+  {refresh ? <meta http-equiv="refresh" content="0;url=/404" /> : null}
 </MainLayout>

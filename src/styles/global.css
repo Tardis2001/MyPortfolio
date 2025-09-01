@@ -7,11 +7,10 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "katex/dist/katex.min.css";
-
-/*
+@import "node_modules/sonner/dist/styles.css" /*
   ---break---'
  */
-@custom-variant dark (&:is(.dark *));
+  @custom-variant dark (&: is(.dark *));
 
 @theme {
   --font-google: "Google Sans Code", monospace;

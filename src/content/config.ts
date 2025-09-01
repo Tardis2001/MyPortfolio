@@ -8,7 +8,10 @@ const blogCollection = defineCollection({
     pubDate: z.date(),
     description: z.string(),
     categories: z.array(z.string()).optional(),
-    image: z.string(),
+    image: z.string().transform((val) => {
+      if (val.startsWith("/")) return val;
+      return `/${val}`;
+    }),
   }),
 });
 
@@ -16,7 +19,10 @@ const projectCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     link: z.string().url(),
-    image: z.string(),
+    image: z.string().transform((val) => {
+      if (val.startsWith("/")) return val;
+      return `/${val}`;
+    }),
     techs: z.array(z.string()).optional(),
     description: z.string(),
   }),
