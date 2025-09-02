@@ -11,7 +11,9 @@ import ProjectCard from "@/components/ui/ProjectCard";
 ---
 
 <MainLayout>
-  <section class="mx-auto flex flex-col justify-center items-center gap-10">
+  <section
+    class="mx-auto flex flex-col justify-center items-center gap-10 w-[90%] md:w-[80%] mx-auto"
+  >
     {
       allProjects.map((project: ProjectEntry) => (
         <ProjectCard project={project} />

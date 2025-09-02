@@ -6,7 +6,7 @@ type ProjectEntry = CollectionEntry<"projects">;
 export default function ProjectCard({ project }: { project: ProjectEntry }) {
   return (
     <a href={project.data.link}>
-      <Card className="w-[90%] bg-background flex flex-row mx-auto">
+      <Card className="w-[60vw] bg-background flex flex-row">
         <CardContent className="flex flex-col justify-center items-center md:items-start md:flex-row gap-10">
           <img
             src={project.data.image}
