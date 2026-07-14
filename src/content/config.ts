@@ -1,11 +1,11 @@
 import { glob } from "astro/loaders";
 import { defineCollection, z } from "astro:content";
-
+import type { CollectionEntry } from "astro:content"; 
 const blogCollection = defineCollection({
-  type: "content",
+  loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/blog" }),
   schema: z.object({
     title: z.string(),
-    pubDate: z.date(),
+    pubDate: z.coerce.date(),
     description: z.string(),
     categories: z.array(z.string()).optional(),
     image: z.string().transform((val) => {
@@ -16,6 +16,7 @@ const blogCollection = defineCollection({
 });
 
 const projectCollection = defineCollection({
+  loader: glob({ pattern: '**/[^_]*.{json,md,mdx}', base: "./src/content/projects" }),
   schema: z.object({
     title: z.string(),
     link: z.string().url(),
@@ -32,3 +33,5 @@ export const collections = {
   blog: blogCollection,
   projects: projectCollection,
 };
+export type BlogPostType = CollectionEntry<"blog">;
+export type ProjectType = CollectionEntry<"projects">;
