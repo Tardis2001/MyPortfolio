@@ -1,6 +1,6 @@
 media:
   input: "public/uploads"
-  output: "/uploads"
+  output: "public//uploads"
 content:
   - name: "blog"
     label: "Blog"
