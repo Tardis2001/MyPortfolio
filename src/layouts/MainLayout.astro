@@ -14,12 +14,18 @@ import "../styles/global.css";
     <BaseHead title={title} description={description} />
   </head>
   <body>
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[100] rounded-md bg-primary px-4 py-2 text-primary-foreground"
+      >Pular para o conteúdo</a
+    >
     <header
       class="sticky top-0 left-0 right-0 w-full z-50 bg-background/95 backdrop-blur supports-backdrop-filter:bg-background/60"
     >
       <Navbar />
     </header>
     <main
+      id="main"
       class="bg-background w-full flex flex-col justify-center items-center"
     >
       <slot />

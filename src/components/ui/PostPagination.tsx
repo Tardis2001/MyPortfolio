@@ -19,13 +19,14 @@ export default function PostPagination({
   nextPost: BlogEntry;
 }) {
   return (
-    <div className="flex justify-center items-center gap-5 max-sm:flex-col max-w-full text-black dark:text-white">
+    <div className="flex justify-center items-center gap-5 max-sm:flex-col max-w-full text-foreground">
       {prevPost ? (
-        <a href={`/blog/${prevPost.slug}`} className="w-full">
-          <Button
-            variant={"outline"}
-            className="h-14 w-full dark:bg-background mx-auto hover:cursor-pointer flex justify-start"
-          >
+        <Button
+          variant={"outline"}
+          className="h-14 w-full dark:bg-background mx-auto hover:cursor-pointer flex justify-start"
+          asChild
+        >
+          <a href={`/blog/${prevPost.slug}`} className="w-full">
             <div className="flex flex-row items-center justify-start gap-5">
               <ArrowLeft />
 
@@ -34,8 +35,8 @@ export default function PostPagination({
                 <span className="underline">{prevPost.data.title}</span>
               </div>
             </div>
-          </Button>
-        </a>
+          </a>
+        </Button>
       ) : (
         <div className="w-full">
           <Button
@@ -46,7 +47,7 @@ export default function PostPagination({
               <ArrowLeft />
 
               <div className="flex flex-col text-muted justify-start items-start">
-                <span>Nao exitem mais posts</span>
+                <span>Não existem mais posts</span>
               </div>
             </div>
           </Button>
@@ -54,21 +55,22 @@ export default function PostPagination({
       )}
 
       {nextPost ? (
-        <a href={`/blog/${nextPost.slug}`} className="w-full">
-          <Button
-            variant={"outline"}
-            className="h-14 dark:bg-background w-full flex hover:cursor-pointer justify-end"
-          >
+        <Button
+          variant={"outline"}
+          className="h-14 dark:bg-background w-full flex hover:cursor-pointer justify-end"
+          asChild
+        >
+          <a href={`/blog/${nextPost.slug}`} className="w-full">
             <div className="flex flex-row items-center justify-end gap-5">
               <div className="flex flex-col justify-end items-end">
-                <span>Proximo Post</span>
+                <span>Próximo Post</span>
                 <span className="underline">{nextPost.data.title}</span>
               </div>
 
               <ArrowRight />
             </div>
-          </Button>
-        </a>
+          </a>
+        </Button>
       ) : (
         <div className="w-full">
           <Button
@@ -77,7 +79,7 @@ export default function PostPagination({
           >
             <div className="flex flex-row items-center justify-end gap-5">
               <div className="flex flex-col text-muted justify-end items-end">
-                <span>Nao exitem mais posts</span>
+                <span>Não existem mais posts</span>
               </div>
 
               <ArrowRight />

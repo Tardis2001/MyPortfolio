@@ -20,7 +20,10 @@ export default function PostCard({ post }: { post: BlogEntry }) {
         <CardContent className="flex flex-col justify-center items-center md:flex-row w-full gap-10">
           <img
             src={post.data.image}
-            className="w-full md:min-w-50 md:h-40 rounded-md object-cover"
+            alt={post.data.title}
+            width={800}
+            height={400}
+            className="h-auto w-full md:min-w-50 md:h-40 rounded-md object-cover"
           />
           <div className="hidden md:block h-full">
             <Separator orientation="vertical" />

@@ -8,46 +8,44 @@ const { showGotoTop = true } = Astro.props;
   class="relative bottom-0 left-0 right-0 py-10 mt-20 flex flex-col gap-4 md:justify-center"
 >
   <div class=`${showGotoTop ? "block" : "hidden"}`>
-    <a
-      class="absolute max-[550px]:bottom-full sm:bottom-[80%] right-[10%] text-secondary dark:text-primary"
-      href="#top"
+    <Button
+      variant="ghost"
+      className="w-[150%] flex items-center justify-center"
+      size="icon"
+      asChild
     >
-      <Button
-        variant="ghost"
-        className="w-[150%] flex items-center justify-center"
-        size="icon"
-      >
+      <a href="#top" aria-label="Topo" class="absolute max-[550px]:bottom-full sm:bottom-[80%] right-[10%] text-secondary dark:text-primary">
         <Icon name={"mdi:arrow-top"} /> Topo
-      </Button>
-    </a>
+      </a>
+    </Button>
   </div>
   <div class="flex flex-col items-center justify-center">
     <div class="flex gap-4 mt-3">
-      <a href="https://github.com/">
-        <Button className="hover:cursor-pointer" variant={"outline"}
-          ><Icon name="mdi:github" /></Button
-        >
-      </a>
-      <a href="https://linkedin.com/">
-        <Button className="hover:cursor-pointer" variant={"outline"}
-          ><Icon name="mdi:linkedin" /></Button
-        >
-      </a>
-      <a href="https://instagram.com/">
-        <Button className="hover:cursor-pointer" variant={"outline"}
-          ><Icon name="mdi:instagram" /></Button
-        >
-      </a>
-      <a href="https://twitter.com/">
-        <Button className="hover:cursor-pointer" variant={"outline"}
-          ><Icon name="mdi:twitter" /></Button
-        >
-      </a>
-      <a href="mailto:matheus_santos_evangelista@hotmail.com">
-        <Button className="hover:cursor-pointer" variant={"outline"}
-          ><Icon name="mdi:mail" /></Button
-        >
-      </a>
+      <Button className="hover:cursor-pointer" variant={"outline"} asChild>
+        <a href="https://github.com/" aria-label="GitHub">
+          <Icon name="mdi:github" />
+        </a>
+      </Button>
+      <Button className="hover:cursor-pointer" variant={"outline"} asChild>
+        <a href="https://linkedin.com/" aria-label="LinkedIn">
+          <Icon name="mdi:linkedin" />
+        </a>
+      </Button>
+      <Button className="hover:cursor-pointer" variant={"outline"} asChild>
+        <a href="https://instagram.com/" aria-label="Instagram">
+          <Icon name="mdi:instagram" />
+        </a>
+      </Button>
+      <Button className="hover:cursor-pointer" variant={"outline"} asChild>
+        <a href="https://twitter.com/" aria-label="Twitter">
+          <Icon name="mdi:twitter" />
+        </a>
+      </Button>
+      <Button className="hover:cursor-pointer" variant={"outline"} asChild>
+        <a href="mailto:matheus_santos_evangelista@hotmail.com" aria-label="E-mail">
+          <Icon name="mdi:mail" />
+        </a>
+      </Button>
     </div>
   </div>
   <div class="text-center text-xs text-secondary dark:text-primary mt-10">

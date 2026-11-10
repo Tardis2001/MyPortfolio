@@ -44,14 +44,14 @@ const CircularProgress = ({
       const docHeight = document.body.scrollHeight - window.innerHeight;
       const progress = Math.min(scrollTop / docHeight, 1);
       setValue(progress * 100);
-      setPercentage(Math.ceil(circumference * ((100 - value) / 100)));
+      setPercentage(Math.ceil(circumference * (1 - progress)));
     };
 
-    window.addEventListener("scroll", update);
+    window.addEventListener("scroll", update, { passive: true });
     update();
 
     return () => window.removeEventListener("scroll", update);
-  }, [window.scrollY]);
+  }, [circumference]);
 
   return (
     <div className="relative">
@@ -61,31 +61,32 @@ const CircularProgress = ({
         viewBox={viewBox}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
-        style={{ transform: "rotate(-90deg)" }}
         className="relative"
       >
-        <circle
-          r={radius}
-          cx={size / 2}
-          cy={size / 2}
-          fill="transparent"
-          strokeWidth={strokeWidth ?? circleStrokeWidth}
-          strokeDasharray={circumference}
-          strokeDashoffset="0"
-          className={cn("stroke-primary/25", className)}
-        />
+        <g style={{ transform: "rotate(-90deg)", transformBox: "fill-box", transformOrigin: "center" }}>
+          <circle
+            r={radius}
+            cx={size / 2}
+            cy={size / 2}
+            fill="transparent"
+            strokeWidth={strokeWidth ?? circleStrokeWidth}
+            strokeDasharray={circumference}
+            strokeDashoffset="0"
+            className={cn("stroke-primary/25", className)}
+          />
 
-        <circle
-          r={radius}
-          cx={size / 2}
-          cy={size / 2}
-          strokeWidth={strokeWidth ?? progressStrokeWidth}
-          strokeLinecap={shape}
-          strokeDashoffset={percentage}
-          fill="transparent"
-          strokeDasharray={circumference}
-          className={cn("stroke-primary", progressClassName)}
-        />
+          <circle
+            r={radius}
+            cx={size / 2}
+            cy={size / 2}
+            strokeWidth={strokeWidth ?? progressStrokeWidth}
+            strokeLinecap={shape}
+            strokeDashoffset={percentage}
+            fill="transparent"
+            strokeDasharray={circumference}
+            className={cn("stroke-primary", progressClassName)}
+          />
+        </g>
       </svg>
       {showLabel && (
         <div

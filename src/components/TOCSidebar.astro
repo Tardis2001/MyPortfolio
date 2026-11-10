@@ -11,7 +11,7 @@ const { toc } = Astro.props;
     {
       toc.map((item: TOC) => (
         <li style={`margin-left: ${(item.depth - 1) * 1.2}rem`}>
-          <a class="hover:underline" href={`#${item.slug}`}>
+          <a class="hover:underline scroll-mt-20" href={`#${item.slug}`}>
             {item.text}
           </a>
         </li>

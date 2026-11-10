@@ -10,7 +10,10 @@ export default function ProjectCard({ project }: { project: ProjectEntry }) {
         <CardContent className="flex flex-col justify-center items-center md:items-start md:flex-row gap-10">
           <img
             src={project.data.image}
-            className="w-full md:max-w-80 md:h-40 rounded-md object-cover"
+            alt={project.data.title}
+            width={800}
+            height={400}
+            className="h-auto w-full md:max-w-80 md:h-40 rounded-md object-cover"
           />
           <div className="hidden md:block h-full">
             <Separator orientation="vertical" />
