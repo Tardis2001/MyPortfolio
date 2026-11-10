@@ -11,7 +11,7 @@ type TimelineEntry = {
 
 const Timeline = ({ timelineData }: { timelineData: TimelineEntry[] }) => {
   return (
-    <section className="bg-background py-32">
+    <section id="experiencias" className="bg-background py-32">
       <div className="container">
         <h3 className="text-foreground mb-10 text-center text-3xl font-bold tracking-tighter sm:text-5xl">
           Educação & Experiências

@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/card";
 export default function Hero() {
   return (
-    <Card className="w-full my-12 bg-background border-0 shadow-none">
+    <Card id="sobre" className="w-full my-12 bg-background border-0 shadow-none">
       <CardHeader>
         <CardTitle className="font-display text-5xl font-semibold tracking-tight">
           Matheus Santos Evangelista
